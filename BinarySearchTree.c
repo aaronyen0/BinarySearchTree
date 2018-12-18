@@ -14,35 +14,26 @@ struct TreeNode* BST_NewNode(int value)
 
 struct TreeNode* BST_FindMax(struct TreeNode* node)
 {
-    if(node == NULL) 
-	{
-		//printf("Root Is NULL\n");
-        return NULL;
+    if(node == NULL) {
+	    //printf("Root Is NULL\n");
+	    return NULL;
     }
 
-    if(node->right)
-	{
-		BST_FindMax(node->right);
-	}
-	else
-	{
-		return node;
-	}
+    if(node->right){	
+	    BST_FindMax(node->right);
+    }else{
+	    return node;
+    }
 }
 
 void BST_InsertValue(struct TreeNode **node, int value)
 {
-	if(*node == NULL)
-	{
+	if(*node == NULL){
 		//printf("Node Is NULL\n");
 		*node = BST_NewNode(value);
-	}
-	else if(value < (*node)->value)
-	{
+	}else if(value < (*node)->value){
 		BST_InsertValue(&(*(node))->left, value);
-	}
-	else if(value > (*node)->value)
-	{
+	}else if(value > (*node)->value){
 		BST_InsertValue(&(*(node))->right, value);
 	}   
 }
@@ -50,8 +41,7 @@ void BST_InsertValue(struct TreeNode **node, int value)
 struct TreeNode* BST_DeleteValue(struct TreeNode *node, int value)
 {
     struct TreeNode *temp;
-    if(node == NULL) 
-	{
+    if(node == NULL) {
         //printf("Value Not Found\n");
     }
     else if(value < node->value) {
